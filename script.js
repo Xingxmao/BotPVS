@@ -56,7 +56,9 @@ function showSection(sectionId) {
                 <div class="card-grid">
                     ${sectionData.map(item => `
                         <div class="card" data-id="${item.id}">
-                            <img src="${item.image}" alt="${item.title}">
+                            <div class="poster-container">
+                                <img src="${item.image}" alt="${item.title}">
+                            </div>
                             <h3>${item.title}</h3>
                         </div>
                     `).join('')}
