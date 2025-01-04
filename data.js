@@ -211,6 +211,11 @@ const data = {
             { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+JC5ykrweSQs2NjRi' },
             { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/films/12346.html' },
             { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/entergalactic' }
+        ]},
+        { id: 'Leo', title: 'Лео', image: 'https://via.placeholder.com/350x530', description: 'Описание фильма Энтергалактик...', links: [
+            { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+0kwy8nhxqiAwZmUy' },
+            { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/films/12346.html' },
+            { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/entergalactic' }
         ]}
     ]
     // Добавьте аналогичные данные для мультов и дорам
