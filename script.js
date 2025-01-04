@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const buttonElement = document.createElement('a');
         buttonElement.className = 'menu-item';
         buttonElement.href = button.link;
-        buttonElement.target = '_blank';
+        buttonElement.target = '_blank'; // Открываем соцсети в новой вкладке
         buttonElement.innerHTML = `<i class="${button.icon}"></i><span>${button.text}</span>`;
         socialButtonsContainer.appendChild(buttonElement);
     });
@@ -17,18 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
         menuItem.className = 'menu-item';
         menuItem.href = `#${item.section}`;
         menuItem.innerHTML = `<i class="${item.icon}"></i><span>${item.text}</span>`;
-        menuItem.addEventListener('click', () => showSection(item.section));
+        menuItem.addEventListener('click', (e) => {
+            e.preventDefault(); // Отменяем стандартное поведение ссылки
+            showSection(item.section);
+        });
         mainMenuItemsContainer.appendChild(menuItem);
     });
 
-    // Обработка кликов по ссылкам
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (link.target !== '_blank') {
-                e.preventDefault();
-                window.open(link.href, '_blank');
+    // Обработка кликов по карточкам
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.card')) {
+            const card = e.target.closest('.card');
+            const sectionId = card.parentElement.parentElement.querySelector('h1').getAttribute('data-section');
+            const itemId = card.getAttribute('data-id');
+            if (sectionId && itemId) {
+                showDetails(sectionId, itemId);
             }
-        });
+        }
     });
 });
 
@@ -47,10 +52,10 @@ function showSection(sectionId) {
     if (sectionData) {
         const sectionHTML = `
             <div class="container">
-                <h1>${sectionId === 'series' ? '🎭 Сериалы' : sectionId === 'films' ? '🎬 Фильмы' : sectionId === 'animation' ? '🤡 Мульты' : '😸 Дорамы'}</h1>
+                <h1 data-section="${sectionId}">${sectionId === 'series' ? '🎭 Сериалы' : sectionId === 'films' ? '🎬 Фильмы' : sectionId === 'animation' ? '🤡 Мульты' : '😸 Дорамы'}</h1>
                 <div class="card-grid">
                     ${sectionData.map(item => `
-                        <div class="card" onclick="showDetails('${sectionId}', '${item.id}')">
+                        <div class="card" data-id="${item.id}">
                             <img src="${item.image}" alt="${item.title}">
                             <h3>${item.title}</h3>
                         </div>
@@ -63,6 +68,39 @@ function showSection(sectionId) {
             </div>
         `;
         dynamicContent.innerHTML = sectionHTML;
+    }
+}
+
+function showDetails(sectionId, itemId) {
+    const mainMenu = document.getElementById('main-menu');
+    const dynamicContent = document.getElementById('dynamic-content');
+    mainMenu.style.display = 'none';
+    dynamicContent.innerHTML = '';
+
+    const sectionData = data[sectionId];
+    if (sectionData) {
+        const item = sectionData.find(i => i.id === itemId);
+        if (item) {
+            const detailsHTML = `
+                <div class="details-container">
+                    <h1>${item.title}</h1>
+                    <p>${item.description}</p>
+                    <div class="details-buttons">
+                        ${item.links.map(link => `
+                            <a href="${link.link}" target="_blank">
+                                <i class="${link.icon}"></i>
+                                <span>${link.text}</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                    <a href="#main-menu" class="menu-item" onclick="showSection('main-menu')">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Назад</span>
+                    </a>
+                </div>
+            `;
+            dynamicContent.innerHTML = detailsHTML;
+        }
     }
 }
 
