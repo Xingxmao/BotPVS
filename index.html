@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPStudio Mini App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="main-menu">
+        <h1><img src="https://github.com/Xingxmao/BotPVS/blob/main/Logovps2.png?raw=true" alt="Логотип VPStudio" class="logo"></h1>
+
+         <!-- Поле поиска с кнопкой -->
+    <div class="search-wrapper">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Поиск по релизам...">
+            <button id="search-button">
+                <i class="fas fa-search"></i>
+                <span>Найти</span>
+            </button>
+        </div>
+    </div>
+
+        <!-- Кнопки соцсетей в одну линию -->
+        <div class="social-buttons" id="social-buttons"></div>
+
+        <!-- Разделительная линия -->
+        <div class="divider"></div>
+
+        <!-- Основное меню -->
+        <div id="main-menu-items"></div>
+
+        <!-- Разделительная линия перед кнопкой "Пожертвовать" -->
+        <div class="divider"></div>
+
+        <!-- Кнопка "Пожертвовать проекту" -->
+        <a href="https://donatty.com/vpstudio" class="donate-button" target="_blank">
+            <i class="fas fa-donate"></i>
+            <span>💎 Пожертвовать проекту</span>
+        </a>
+    </div>
+
+    <!-- Секции будут загружаться динамически -->
+    <div id="dynamic-content"></div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
