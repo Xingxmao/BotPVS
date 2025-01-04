@@ -12,12 +12,12 @@ const data = {
         { icon: 'fas fa-heart', text: '😸 Дорамы', section: 'dorama' }
     ],
     series: [
-        { id: 'penguin', title: 'Пингвин', image: 'https://github.com/Xingxmao/BotPVS/blob/main/Penguin.jpg?raw=true', description: 'Описание сериала Пингвин...', links: [
+        { id: 'penguin', title: 'Пингвин', image: 'https://github.com/Xingxmao/BotPVS/blob/main/Penguin2.jpg?raw=true', description: 'Описание сериала Пингвин...', links: [
             { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+1hEaOJ8UxKc1YTIy' },
             { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/series/12345.html' },
             { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/penguin' }
         ]},
-        { id: 'ones-of-us', title: 'Одни из нас', image: 'https://github.com/Xingxmao/BotPVS/blob/main/Thelastofus.jpg?raw=true', description: 'Описание сериала Одни из нас...', links: [
+        { id: 'ones-of-us', title: 'Одни из нас', image: 'https://github.com/Xingxmao/BotPVS/blob/main/Thelastofus2.jpg?raw=true', description: 'Описание сериала Одни из нас...', links: [
             { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+ElwE54bcMIY0M2Ri' },
             { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/series/12346.html' },
             { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/ones-of-us' }
