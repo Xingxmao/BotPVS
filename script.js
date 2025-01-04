@@ -105,17 +105,13 @@ function showDetails(sectionId, itemId) {
         }
     }
 }
-
-// Находим элементы
-const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
-
+// ПОИСК
 function performSearch() {
     const searchText = searchInput.value.toLowerCase();
     const mainMenu = document.getElementById('main-menu');
     const dynamicContent = document.getElementById('dynamic-content');
 
-    // Собираем все релизы, проверяя, что каждый ключ существует и является массивом
+    // Собираем все релизы из всех категорий
     const allReleases = [
         ...(data.series || []),
         ...(data.films || []),
@@ -129,9 +125,10 @@ function performSearch() {
         return;
     }
 
+    // Фильтруем релизы по названию и описанию
     const filteredReleases = allReleases.filter(release => 
         release.title.toLowerCase().includes(searchText) || 
-        release.description.toLowerCase().includes(searchText)
+        (release.description && release.description.toLowerCase().includes(searchText))
     );
 
     mainMenu.style.display = 'none';
@@ -144,7 +141,9 @@ function performSearch() {
                 <div class="card-grid">
                     ${filteredReleases.map(release => `
                         <div class="card" onclick="showDetails('${release.id}')">
-                            <img src="${release.image}" alt="${release.title}">
+                            <div class="poster-container">
+                                <img src="${release.image}" alt="${release.title}">
+                            </div>
                             <h3>${release.title}</h3>
                         </div>
                     `).join('')}
@@ -169,6 +168,11 @@ function performSearch() {
     }
 }
 
+// Находим элементы поиска
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+
+// Добавляем обработчики событий
 searchButton.addEventListener('click', performSearch);
 searchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
