@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Релиз - VPStudio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="release-details">
+        <!-- Контент будет загружен через JavaScript -->
+    </div>
+
+    <!-- Кнопка "Назад" -->
+    <a href="categories.html" class="menu-item">
+        <i class="fas fa-arrow-left"></i>
+        <span>Назад</span>
+    </a>
+
+    <!-- Данные о релизах -->
+    <script>
+        const releases = {
+            penguin: {
+                title: 'Пингвин',
+                image: 'https://via.placeholder.com/350x530',
+                description: 'Описание сериала Пингвин. Это захватывающая история о приключениях...',
+                links: [
+                    { text: 'Telegram', icon: 'fab fa-telegram', url: 'https://t.me/series/penguin' },
+                    { text: 'Сайт', icon: 'fas fa-globe', url: 'https://rezka.ag/series/12345.html' },
+                    { text: 'Торрент', icon: 'fas fa-download', url: 'https://example.com/torrent/penguin' }
+                ]
+            },
+            pinocchio: {
+                title: 'Пиноккио Дель Торо',
+                image: 'https://via.placeholder.com/350x530',
+                description: 'Описание фильма Пиноккио Дель Торо. Это уникальная интерпретация классической сказки...',
+                links: [
+                    { text: 'Telegram', icon: 'fab fa-telegram', url: 'https://t.me/films/pinocchio' },
+                    { text: 'Сайт', icon: 'fas fa-globe', url: 'https://rezka.ag/films/12345.html' },
+                    { text: 'Торрент', icon: 'fas fa-download', url: 'https://example.com/torrent/pinocchio' }
+                ]
+            }
+        };
+
+        // Загрузка деталей релиза
+        const releaseId = new URLSearchParams(window.location.search).get('id');
+        const release = releases[releaseId];
+
+        if (release) {
+            document.getElementById('release-details').innerHTML = `
+                <div class="details-container">
+                    <img src="${release.image}" alt="${release.title}">
+                    <h1>${release.title}</h1>
+                    <p>${release.description}</p>
+                    <div class="details-buttons">
+                        ${release.links.map(link => `
+                            <a href="${link.url}" target="_blank">
+                                <i class="${link.icon}"></i> ${link.text}
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
