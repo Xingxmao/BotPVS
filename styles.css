@@ -180,17 +180,35 @@ h1 {
 }
 
 /* Стили для кнопок соцсетей в одну линию */
+/* Стили для кнопок соцсетей */
 .social-buttons {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    gap: 5px; /* Уменьшили расстояние между кнопками */
     margin-bottom: 20px;
 }
 
 .social-buttons .menu-item {
     flex: 1;
-    text-align: center;
-    margin: 0;
+    display: flex;
+    align-items: center; /* Выравниваем текст и иконки по центру вертикально */
+    justify-content: center; /* Выравниваем текст и иконки по центру горизонтально */
+    padding: 8px; /* Уменьшили padding */
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12px; /* Уменьшили размер текста */
+    transition: background-color 0.3s ease;
+}
+
+.social-buttons .menu-item i {
+    font-size: 14px; /* Уменьшили размер иконок */
+    margin-right: 5px; /* Отступ между иконкой и текстом */
+}
+
+.social-buttons .menu-item:hover {
+    background-color: #3c3c3c;
 }
 
 /* Разделительная линия */
