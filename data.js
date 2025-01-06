@@ -469,4 +469,5 @@ const data = {
                 { icon: 'fas fa-download', text: 'Торрент', link: '' }
             ]
         }
+    ]
 };
