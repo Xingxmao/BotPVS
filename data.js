@@ -19,8 +19,8 @@ const data = {
             description: 'Действие сериала происходит вскоре после того, как Загадочник взрывает дамбу, что приводит к наводнению и тысячам жертв в Готэм-сити. Хаос в городе многократно усиливается из-за смерти криминального авторитета Кармайна Фальконе. Поскольку будущее самой могущественной преступной семьи висит на волоске, Освальд Кобблпот, он же Пингвин, видит в этом отличную возможность стать новым главой криминального мира. Конкуренцию ему составляет дочь Фальконе София — безжалостная серийная убийца, недавно освободившаяся из лечебницы Аркхем.', 
             links: [
                 { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+1hEaOJ8UxKc1YTIy' },
-                { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/series/12345.html' },
-                { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/penguin' }
+                { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/series/drama/73086-penguin-2024.html' },
+                { icon: 'fas fa-download', text: 'Торрент', link: 'https://t.me/VPStorrents/3' }
             ]
         },
         { 
@@ -30,8 +30,8 @@ const data = {
             description: 'События сериала разворачиваются на руинах человеческой цивилизации, которая оказалась на грани вымирания из-за пандемии неизлечимой грибковой инфекции, превращающей людей в кровожадных монстров. Фарцовщик Джоэл Миллер, ставший циничным и жестоким после смерти дочери, сопровождает через всю Америку 14-летнюю Элли, невосприимчивую к вирусу, которая может оказаться ключом к созданию вакцины. На своем пути они встречают враждебных военных, безжалостных бандитов, мутировавших зомби и прочие опасности постапокалиптического мира.', 
             links: [
                 { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+ElwE54bcMIY0M2Ri' },
-                { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/series/12346.html' },
-                { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/ones-of-us' }
+                { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/series/adventures/53465-odni-iz-nas-2023.html#t:322-s:1-e:1' },
+                { icon: 'fas fa-download', text: 'Торрент', link: 'https://t.me/VPStorrents/4' }
             ]
         },
         { 
