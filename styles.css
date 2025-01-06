@@ -74,6 +74,7 @@ h1 {
 
 /* Стили для карточек */
 /* Стили для карточек */
+/* Стили для карточек */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -98,11 +99,11 @@ h1 {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Контейнер для постеров с фиксированным соотношением 2:3 */
+/* Контейнер для постеров с адаптивным размером */
 .card .poster-container {
     position: relative;
     width: 100%;
-    padding-top: 150%; /* Соотношение 2:3 (высота = 150% от ширины) */
+    aspect-ratio: 2 / 3; /* Соотношение сторон 2:3 */
     overflow: hidden;
 }
 
@@ -120,6 +121,9 @@ h1 {
     font-size: 18px;
     margin: 10px 0;
     padding: 0 10px; /* Добавим отступы для текста */
+    white-space: nowrap; /* Текст не переносится на новую строку */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Текст обрезается и добавляется "..." */
 }
 
 .card-buttons {
