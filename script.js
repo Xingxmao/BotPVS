@@ -53,8 +53,8 @@ function showSection(sectionId) {
 
     const sectionData = data[sectionId];
     if (sectionData) {
-        currentPage = 1; // Сбрасываем страницу при переходе в раздел
-        const paginatedData = sectionData.slice(0, itemsPerPage); // Первые 6 релизов
+        currentPage = 1;
+        const paginatedData = sectionData.slice(0, itemsPerPage);
 
         const sectionHTML = `
             <div class="container">
@@ -72,13 +72,49 @@ function showSection(sectionId) {
                 ${sectionData.length > itemsPerPage ? `
                     <button class="load-more-button" onclick="loadMore('${sectionId}')">Загрузить еще</button>
                 ` : ''}
-                <a href="#main-menu" class="menu-item" onclick="showSection('main-menu')">
+                <a href="#main-menu" class="menu-item back-button" onclick="showSection('main-menu')">
                     <i class="fas fa-arrow-left"></i>
                     <span>Назад</span>
                 </a>
             </div>
         `;
         dynamicContent.innerHTML = sectionHTML;
+    }
+}
+
+function showDetails(sectionId, itemId) {
+    const mainMenu = document.getElementById('main-menu');
+    const dynamicContent = document.getElementById('dynamic-content');
+    mainMenu.style.display = 'none';
+    dynamicContent.innerHTML = '';
+
+    const sectionData = data[sectionId];
+    if (sectionData) {
+        const item = sectionData.find(i => i.id === itemId);
+        if (item) {
+            const detailsHTML = `
+                <div class="details-container">
+                    <h1>${item.title}</h1>
+                    <div class="poster-container">
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <p>${item.description}</p>
+                    <div class="details-buttons">
+                        ${item.links.map(link => `
+                            <a href="${link.link}" target="_blank">
+                                <i class="${link.icon}"></i>
+                                <span>${link.text}</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                    <a href="#main-menu" class="menu-item back-button" onclick="showSection('main-menu')">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Назад</span>
+                    </a>
+                </div>
+            `;
+            dynamicContent.innerHTML = detailsHTML;
+        }
     }
 }
 
