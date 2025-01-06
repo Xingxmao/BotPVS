@@ -61,12 +61,11 @@ function showSection(sectionId) {
                 <h1 data-section="${sectionId}">${sectionId === 'series' ? '🎭 Сериалы' : sectionId === 'films' ? '🎬 Фильмы' : sectionId === 'animation' ? '🤡 Мульты' : '😸 Дорамы'}</h1>
                 <div class="card-grid">
                     ${paginatedData.map(item => `
-                        <div class="card" data-id="${item.id}" data-section="${sectionId}">
+                        <div class="card" data-id="${item.id}" data-section="${sectionId}" onclick="showDetails('${sectionId}', '${item.id}')">
                             <div class="poster-container">
                                 <img src="${item.image}" alt="${item.title}">
                             </div>
                             <h3>${item.title}</h3>
-                            <button class="details-button" onclick="showDetails('${sectionId}', '${item.id}')">Подробнее</button>
                         </div>
                     `).join('')}
                 </div>
@@ -83,6 +82,35 @@ function showSection(sectionId) {
     }
 }
 
+function loadMore(sectionId) {
+    const sectionData = data[sectionId];
+    const dynamicContent = document.getElementById('dynamic-content');
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedData = sectionData.slice(startIndex, endIndex);
+
+    if (paginatedData.length > 0) {
+        const cardGrid = dynamicContent.querySelector('.card-grid');
+        paginatedData.forEach(item => {
+            const cardHTML = `
+                <div class="card" data-id="${item.id}" data-section="${sectionId}" onclick="showDetails('${sectionId}', '${item.id}')">
+                    <div class="poster-container">
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <h3>${item.title}</h3>
+                </div>
+            `;
+            cardGrid.insertAdjacentHTML('beforeend', cardHTML);
+        });
+
+        currentPage++;
+
+        // Скрываем кнопку "Загрузить еще", если больше нет данных
+        if (endIndex >= sectionData.length) {
+            dynamicContent.querySelector('.load-more-button').style.display = 'none';
+        }
+    }
+}
 function loadMore(sectionId) {
     const sectionData = data[sectionId];
     const dynamicContent = document.getElementById('dynamic-content');
