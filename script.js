@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let currentPage = 1;
-const itemsPerPage = 4; // Показываем 4 релиза на странице
+const itemsPerPage = 6; // Показываем 6 релизов на странице (3 релиза × 2 строки)
 
 function showSection(sectionId) {
     const mainMenu = document.getElementById('main-menu');
@@ -54,7 +54,7 @@ function showSection(sectionId) {
     const sectionData = data[sectionId];
     if (sectionData) {
         currentPage = 1; // Сбрасываем страницу при переходе в раздел
-        const paginatedData = sectionData.slice(0, itemsPerPage); // Первые 4 релиза
+        const paginatedData = sectionData.slice(0, itemsPerPage); // Первые 6 релизов
 
         const sectionHTML = `
             <div class="container">
@@ -144,6 +144,7 @@ function showDetails(sectionId, itemId) {
         }
     }
 }
+
 // ПОИСК
 function performSearch() {
     const searchText = searchInput.value.toLowerCase();
@@ -227,38 +228,5 @@ searchInput.addEventListener('keypress', (event) => {
         performSearch();
     }
 });
-
-function showDetails(sectionId, itemId) {
-    const mainMenu = document.getElementById('main-menu');
-    const dynamicContent = document.getElementById('dynamic-content');
-    mainMenu.style.display = 'none';
-    dynamicContent.innerHTML = '';
-
-    const sectionData = data[sectionId];
-    if (sectionData) {
-        const item = sectionData.find(i => i.id === itemId);
-        if (item) {
-            const detailsHTML = `
-                <div class="details-container">
-                    <h1>${item.title}</h1>
-                    <p>${item.description}</p>
-                    <div class="details-buttons">
-                        ${item.links.map(link => `
-                            <a href="${link.link}" target="_blank">
-                                <i class="${link.icon}"></i>
-                                <span>${link.text}</span>
-                            </a>
-                        `).join('')}
-                    </div>
-                    <a href="#main-menu" class="menu-item" onclick="showSection('main-menu')">
-                        <i class="fas fa-arrow-left"></i>
-                        <span>Назад</span>
-                    </a>
-                </div>
-            `;
-            dynamicContent.innerHTML = detailsHTML;
-        }
-    }
-}
 
 
