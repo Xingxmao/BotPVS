@@ -140,7 +140,7 @@ function performSearch() {
                 <h1>Результаты поиска</h1>
                 <div class="card-grid">
                     ${filteredReleases.map(release => `
-                        <div class="card" onclick="showDetails('${release.id}')">
+                        <div class="card" data-id="${release.id}" data-section="${release.section || 'series'}">
                             <div class="poster-container">
                                 <img src="${release.image}" alt="${release.title}">
                             </div>
@@ -155,6 +155,15 @@ function performSearch() {
             </div>
         `;
         dynamicContent.innerHTML = searchResultsHTML;
+
+        // Добавляем обработчики кликов для карточек
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                const sectionId = card.getAttribute('data-section');
+                const itemId = card.getAttribute('data-id');
+                showDetails(sectionId, itemId);
+            });
+        });
     } else {
         dynamicContent.innerHTML = `
             <div class="container">
