@@ -73,25 +73,30 @@ h1 {
 }
 
 /* Стили для карточек */
-/* Основные стили для контейнера */
+/* Стили для контейнера с постерами */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки на строку */
-    gap: 10px; /* Расстояние между карточками */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     padding: 10px;
+    margin-bottom: 30px; /* Увеличили отступ снизу */
 }
 
-/* Адаптивность для маленьких экранов */
 @media (max-width: 768px) {
     .card-grid {
-        grid-template-columns: repeat(3, 1fr); /* 2 колонки на строку для экранов меньше 768px */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
     .card-grid {
-        grid-template-columns: 1fr; /* 1 колонка на строку для экранов меньше 480px */
+        grid-template-columns: 1fr;
     }
+}
+
+/* Стили для кнопки "Назад" */
+.menu-item.back-button {
+    margin-top: 12px; /* Добавили отступ сверху */
 }
 
 /* Стили для карточки */
