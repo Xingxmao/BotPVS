@@ -84,7 +84,7 @@ h1 {
 /* Адаптивность для маленьких экранов */
 @media (max-width: 768px) {
     .card-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 колонки на строку для экранов меньше 768px */
+        grid-template-columns: repeat(3, 1fr); /* 2 колонки на строку для экранов меньше 768px */
     }
 }
 
