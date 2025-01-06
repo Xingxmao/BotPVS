@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+let currentPage = 1;
+const itemsPerPage = 4; // Показываем 4 релиза на странице
+
 function showSection(sectionId) {
     const mainMenu = document.getElementById('main-menu');
     const dynamicContent = document.getElementById('dynamic-content');
@@ -50,19 +53,26 @@ function showSection(sectionId) {
 
     const sectionData = data[sectionId];
     if (sectionData) {
+        currentPage = 1; // Сбрасываем страницу при переходе в раздел
+        const paginatedData = sectionData.slice(0, itemsPerPage); // Первые 4 релиза
+
         const sectionHTML = `
             <div class="container">
                 <h1 data-section="${sectionId}">${sectionId === 'series' ? '🎭 Сериалы' : sectionId === 'films' ? '🎬 Фильмы' : sectionId === 'animation' ? '🤡 Мульты' : '😸 Дорамы'}</h1>
                 <div class="card-grid">
-                    ${sectionData.map(item => `
-                        <div class="card" data-id="${item.id}">
+                    ${paginatedData.map(item => `
+                        <div class="card" data-id="${item.id}" data-section="${sectionId}">
                             <div class="poster-container">
                                 <img src="${item.image}" alt="${item.title}">
                             </div>
                             <h3>${item.title}</h3>
+                            <button class="details-button" onclick="showDetails('${sectionId}', '${item.id}')">Подробнее</button>
                         </div>
                     `).join('')}
                 </div>
+                ${sectionData.length > itemsPerPage ? `
+                    <button class="load-more-button" onclick="loadMore('${sectionId}')">Загрузить еще</button>
+                ` : ''}
                 <a href="#main-menu" class="menu-item" onclick="showSection('main-menu')">
                     <i class="fas fa-arrow-left"></i>
                     <span>Назад</span>
@@ -73,6 +83,36 @@ function showSection(sectionId) {
     }
 }
 
+function loadMore(sectionId) {
+    const sectionData = data[sectionId];
+    const dynamicContent = document.getElementById('dynamic-content');
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedData = sectionData.slice(startIndex, endIndex);
+
+    if (paginatedData.length > 0) {
+        const cardGrid = dynamicContent.querySelector('.card-grid');
+        paginatedData.forEach(item => {
+            const cardHTML = `
+                <div class="card" data-id="${item.id}" data-section="${sectionId}">
+                    <div class="poster-container">
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <h3>${item.title}</h3>
+                    <button class="details-button" onclick="showDetails('${sectionId}', '${item.id}')">Подробнее</button>
+                </div>
+            `;
+            cardGrid.insertAdjacentHTML('beforeend', cardHTML);
+        });
+
+        currentPage++;
+
+        // Скрываем кнопку "Загрузить еще", если больше нет данных
+        if (endIndex >= sectionData.length) {
+            dynamicContent.querySelector('.load-more-button').style.display = 'none';
+        }
+    }
+}
 function showDetails(sectionId, itemId) {
     const mainMenu = document.getElementById('main-menu');
     const dynamicContent = document.getElementById('dynamic-content');
