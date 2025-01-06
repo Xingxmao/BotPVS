@@ -76,9 +76,22 @@ h1 {
 /* Основные стили для контейнера */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Адаптивные колонки */
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на строку */
     gap: 10px; /* Расстояние между карточками */
     padding: 10px;
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на строку для экранов меньше 768px */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* 1 колонка на строку для экранов меньше 480px */
+    }
 }
 
 /* Стили для карточки */
