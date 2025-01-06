@@ -434,5 +434,39 @@ const data = {
                 { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/entergalactic' }
             ]
         }
-    ]
+    ],
+    dorama: [
+        { 
+            id: 'ahilles', 
+            title: 'Ахиллес и Черепаха', 
+            image: 'https://www.film.ru/sites/default/files/styles/thumb_260x400/public/afisha/AHILKAME/posters/poster2.jpg', 
+            description: 'Труды и дни бесталанного, но упрямого художника по имении Матису (Китано), мечтающего обрести вдохновение и успех, копируя чужие ноу-хау (рисование подсолнухов в горящем сарае и т.д.). Неспешная абсурдистская комедия.', 
+            links: [
+                { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+EJmhMOQx7WA3M2M6' },
+                { icon: 'fas fa-globe', text: 'Сайт', link: '' },
+                { icon: 'fas fa-download', text: 'Торрент', link: '' }
+            ]
+        },
+        { 
+            id: 'brodyaga', 
+            title: 'Бродяга', 
+            image: 'https://www.film.ru/sites/default/files/styles/thumb_260x400/public/movies/posters/49825298-3430952.jpeg', 
+            description: 'Чха Гон - каскадер. В авиакатастрофе погибает национальная сборная Кореи по тхэквондо, и он решает докопаться до истины, так как среди погибших был его племянник. Чха Гон сталкивается с неожиданными обстоятельствами, которые ставят его в центр огромного коррупционного скандала.', 
+            links: [
+                { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+2lJ-XmnPj79kZGEy' },
+                { icon: 'fas fa-globe', text: 'Сайт', link: '' },
+                { icon: 'fas fa-download', text: 'Торрент', link: '' }
+            ]
+        },
+        { 
+            id: 'gorapek', 
+            title: 'Гора Пэкду', 
+            image: 'https://dlist.one/wp-content/uploads/2019/11/gora-pekdu.jpg', 
+            description: 'Целеустремленный и оптимистичный Марио с детства неразлучен со своим младшим братом, робким и застенчивым Луиджи, которого всегда защищал от хулиганов. Оба уходят от своего прежнего работодателя, чтобы открыть собственный сантехнический бизнес в Бруклине, потратив все сбережения на рекламный ролик. Однажды Марио и Луиджи спускаются в подземные коммуникации, чтобы починить водопровод, где неожиданно попадают через таинственную трубу в фантастическое Грибное королевство. Там главные герои втягиваются в невероятные приключения по спасению принцессы Пич от злобного Боузера.', 
+            links: [
+                { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+5SStfiHMMQUyOTU6' },
+                { icon: 'fas fa-globe', text: 'Сайт', link: '' },
+                { icon: 'fas fa-download', text: 'Торрент', link: '' }
+            ]
+        }
 };
