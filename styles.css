@@ -73,27 +73,43 @@ h1 {
 }
 
 /* Стили для карточек */
+/* Основные стили для контейнера */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Адаптивные колонки */
     gap: 10px; /* Расстояние между карточками */
+    padding: 10px;
 }
 
+/* Стили для карточки */
 .card {
     background-color: #2c2c2c;
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределение пространства внутри карточки */
 }
 
+/* Контейнер для постера */
+.poster-container {
+    flex: 1; /* Занимает все доступное пространство внутри карточки */
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    padding: 10px; /* Отступы внутри контейнера */
+}
+
+/* Стили для изображения постера */
 .card img {
-    width: 100%; /* Занимает всю ширину контейнера */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-    aspect-ratio: 2 / 3; /* Соотношение сторон 2:3 (ширина к высоте) */
-    object-fit: cover; /* Изображение заполняет контейнер, сохраняя пропорции */
+    max-width: 100%; /* Ограничиваем ширину до 100% контейнера */
+    max-height: 100%; /* Ограничиваем высоту до 100% контейнера */
+    object-fit: contain; /* Изображение полностью помещается в контейнер */
+    border-radius: 8px; /* Скругление углов */
 }
 
+/* Стили для заголовка */
 .card h3 {
     font-size: 14px;
     margin: 8px 0;
@@ -101,27 +117,7 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-/* Кнопка "Подробнее" */
-.card .details-button {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 6px 12px;
-    background-color: #007bff; /* Синий цвет */
     color: #ffffff;
-    border: none;
-    border-radius: 16px;
-    font-size: 12px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
-    z-index: 2;
-}
-
-.card:hover .details-button {
-    opacity: 1; /* Плавное появление кнопки при наведении */
 }
 
 .card .details-button:hover {
