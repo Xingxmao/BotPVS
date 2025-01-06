@@ -77,13 +77,13 @@ h1 {
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Адаптивные колонки */
-    gap: 10px; /* Уменьшим отступы для узких экранов */
+    gap: 10px; /* Уменьшим отступы для компактности */
     padding: 0;
 }
 
 .card {
     background-color: #2c2c2c;
-    border-radius: 12px;
+    border-radius: 8px; /* Меньше скругление углов */
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -96,7 +96,7 @@ h1 {
 
 .card:hover {
     transform: translateY(-5px); /* Легкий подъем при наведении */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Тень при наведении */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень при наведении */
 }
 
 /* Контейнер для постеров */
@@ -118,49 +118,32 @@ h1 {
 }
 
 .card:hover img {
-    transform: scale(1.1); /* Увеличение изображения при наведении */
+    transform: scale(1.05); /* Увеличение изображения при наведении */
 }
 
 /* Заголовок карточки */
 .card h3 {
-    font-size: 16px; /* Уменьшим размер текста для узких экранов */
-    margin: 10px 0;
-    padding: 0 10px;
+    font-size: 14px; /* Уменьшим размер текста для компактности */
+    margin: 8px 0;
+    padding: 0 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #ffffff;
 }
 
-/* Эффект наложения на постер */
-.card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.card:hover::after {
-    opacity: 1; /* Плавное появление градиента при наведении */
-}
-
 /* Кнопка "Подробнее" */
 .card .details-button {
     position: absolute;
-    bottom: 10px;
+    bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 8px 16px;
-    background-color: #4CAF50;
+    padding: 6px 12px;
+    background-color: #007bff; /* Синий цвет */
     color: #ffffff;
     border: none;
-    border-radius: 20px;
-    font-size: 14px;
+    border-radius: 16px;
+    font-size: 12px;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s ease, background-color 0.3s ease;
@@ -172,7 +155,7 @@ h1 {
 }
 
 .card .details-button:hover {
-    background-color: #45a049; /* Изменение цвета кнопки при наведении */
+    background-color: #0056b3; /* Темнее при наведении */
 }
 
 /* Стили для страницы с описанием */
