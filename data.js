@@ -91,7 +91,7 @@ const data = {
             { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+K29ZRjsD25kxYTMy' },
             { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/series/12346.html' },
             { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/ones-of-us' }
-        ]},
+        ]}
         
     ],
     films: [
@@ -179,7 +179,7 @@ const data = {
             { icon: 'fab fa-telegram', text: 'Telegram', link: 'https://t.me/+NGfeF1_IAvE3YjQ6' },
             { icon: 'fas fa-globe', text: 'Сайт', link: 'https://rezka.ag/films/12346.html' },
             { icon: 'fas fa-download', text: 'Торрент', link: 'https://example.com/torrent/entergalactic' }
-        ]},
+        ]}
     ],
     animation: [
         { id: 'zveropolis', title: 'Зверополис', image: 'https://www.film.ru/sites/default/files/styles/thumb_260x400/public/movies/posters/8023507-1589791.jpeg', description: 'События разворачиваются в той же временной шкале, что и оригинальный мультфильм, где рассказывается о жизни в огромном современном городе Зверополисе, населенном разными хищными и травоядными животными, которые пытаются сосуществовать в мире. Каждый из эпизодов посвящен отдельной короткой истории с участием одного или нескольких уже знакомых персонажей. Среди них: нерасторопные родители крольчихи Джуди Хопс; участвующая в реалити-шоу землеройка Фру-Фру; мелкий жулик Дюк Хорьковиц; босс мафии Мистер Биг, вспоминающий свое прошлое; служащий полиции Бенджамин Когтяузер, желающий пройти прослушивание у поп-звезды Газелль; и официантка Сэм, пытающаяся сохранять терпение при обслуживании столика влюбленной пары ленивцев.', links: [
