@@ -202,39 +202,35 @@ function performSearch() {
     }
 
     // Фильтруем релизы по названию и описанию
-const filteredReleases = allReleases.filter(release => 
-    release.title.toLowerCase().includes(searchText) || 
-    (release.description && release.description.toLowerCase().includes(searchText))
-);
-mainMenu.style.display = 'none';
-dynamicContent.innerHTML = '';
-if (filteredReleases.length > 0) {
-    const searchResultsHTML = `
-        <div class="container">
-            <h1>Результаты поиска</h1>
-            <div class="card-grid">
-                ${filteredReleases.map(release => {
-                    // Определяем секцию, если она не указана, то используем 'series' по умолчанию
-                    const section = release.section ? release.section : 'series';
+    const filteredReleases = allReleases.filter(release => 
+        release.title.toLowerCase().includes(searchText) || 
+        (release.description && release.description.toLowerCase().includes(searchText))
+    );
 
-                    return `
-                        <div class="card" data-id="${release.id}" data-section="${section}">
+    mainMenu.style.display = 'none';
+    dynamicContent.innerHTML = '';
+
+    if (filteredReleases.length > 0) {
+        const searchResultsHTML = `
+            <div class="container">
+                <h1>Результаты поиска</h1>
+                <div class="card-grid">
+                    ${filteredReleases.map(release => `
+                        <div class="card" data-id="${release.id}" data-section="${release.section || 'series'}">
                             <div class="poster-container">
                                 <img src="${release.image}" alt="${release.title}">
                             </div>
                             <h3>${release.title}</h3>
                         </div>
-                    `;
-                }).join('')}
+                    `).join('')}
+                </div>
+                <a href="#main-menu" class="menu-item" onclick="showSection('main-menu')">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Назад</span>
+                </a>
             </div>
-            <a href="#main-menu" class="menu-item" onclick="showSection('main-menu')">
-                <i class="fas fa-arrow-left"></i>
-                <span>Назад</span>
-            </a>
-        </div>
-    `;
-    dynamicContent.innerHTML = searchResultsHTML;
-}
+        `;
+        dynamicContent.innerHTML = searchResultsHTML;
 
         // Добавляем обработчики кликов для карточек
         document.querySelectorAll('.card').forEach(card => {
