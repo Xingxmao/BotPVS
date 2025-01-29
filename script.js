@@ -189,10 +189,10 @@ function performSearch() {
 
     // Собираем все релизы из всех категорий
     const allReleases = [
-        ...(data.series || []),
-        ...(data.films || []),
-        ...(data.animation || []),
-        ...(data.dorama || [])
+        ...(data.series || []).map(release => ({ ...release, section: 'series' })), // Добавляем раздел 'series'
+        ...(data.films || []).map(release => ({ ...release, section: 'films' })),   // Добавляем раздел 'films'
+        ...(data.animation || []).map(release => ({ ...release, section: 'animation' })), // Добавляем раздел 'animation'
+        ...(data.dorama || []).map(release => ({ ...release, section: 'dorama' }))  // Добавляем раздел 'dorama'
     ];
 
     if (searchText === '') {
@@ -216,7 +216,7 @@ function performSearch() {
                 <h1>Результаты поиска</h1>
                 <div class="card-grid">
                     ${filteredReleases.map(release => `
-                        <div class="card" data-id="${release.id}" data-section="${release.section || 'series'}">
+                        <div class="card" data-id="${release.id}" data-section="${release.section}">
                             <div class="poster-container">
                                 <img src="${release.image}" alt="${release.title}">
                             </div>
