@@ -8,32 +8,38 @@
 </head>
 <body>
     <div class="container" id="main-menu">
-        <h1><img src="https://github.com/Xingxmao/BotPVS/blob/main/Logovps2.png?raw=true" alt="Логотип VPStudio" class="logo"></h1>
-
-         <!-- Поле поиска с кнопкой -->
-    <div class="search-wrapper">
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Поиск по релизам...">
-            <button id="search-button">
-                <i class="fas fa-search"></i>
-                <span>Найти</span>
-            </button>
-        </div>
-    </div>
-
-        <!-- Кнопки соцсетей в одну линию -->
+        <!-- Соцкнопки вверху -->
         <div class="social-buttons" id="social-buttons"></div>
-
-        <!-- Разделительная линия -->
-        <div class="divider"></div>
-
+    
+        <!-- Лого -->
+        <h1 class="logo-container">
+            <img src="https://github.com/Xingxmao/BotPVS/blob/main/Logovps2.png?raw=true" 
+                 alt="Логотип VPStudio" 
+                 class="logo">
+        </h1>
+    
+        <!-- Поиск -->
+        <div class="search-wrapper">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Поиск по релизам...">
+                <button id="search-button">
+                    <i class="fas fa-search"></i>
+                    <span>Найти</span>
+                </button>
+            </div>
+        </div>
+    
+    <!-- Новые релизы -->
+    <div class="container">
+        <h2 class="section-title">🎬 Новые релизы</h2>
+        <div id="featured-releases" class="releases-list"></div>
+    </div>
+    
         <!-- Основное меню -->
         <div id="main-menu-items"></div>
-
-        <!-- Разделительная линия перед кнопкой "Пожертвовать" -->
+    
+        <!-- Кнопка пожертвовать -->
         <div class="divider"></div>
-
-        <!-- Кнопка "Пожертвовать проекту" -->
         <a href="https://donatty.com/vpstudio" class="donate-button" target="_blank">
             <i class="fas fa-donate"></i>
             <span>💎 Пожертвовать проекту</span>
