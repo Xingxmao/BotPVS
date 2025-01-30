@@ -426,12 +426,37 @@ h1 {
 }
 
 /* Новые релизы - синяя рамка */
+/* Основной контейнер */
+.container-release {
+    width: 100%;
+    max-width: 0 auto; /* Установите такое же значение как у других блоков */
+    margin: 0 auto;
+    padding: 15 auto;
+    box-sizing: border-box;
+}
+
+/* Специфичные стили для блока новых релизов */
 #featured-releases {
+    width: 100%;
     border: 2px solid #007bff;
     border-radius: 8px;
-    padding: 15px;
-    margin: 20px 0;
+    padding: 20px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    
+    /* Гарантия одинаковой ширины с поиском */
+    max-width: inherit; /* Наследует от .container */
+    background: #1e1e1e;
 }
+
+/* Если используется grid-сетка */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+
 
 /* Кнопка "Смотреть" */
 .watch-btn {
