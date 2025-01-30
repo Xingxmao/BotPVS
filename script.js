@@ -354,9 +354,6 @@ function generateFeaturedHTML(items) {
                     <span class="release-badge ${item.section}">
                         ${getType(item.section)}
                     </span>
-                    <time class="release-date">
-                        ${formatDate(item.dateAdded)}
-                    </time>
                 </div>
             </div>
             <button class="watch-btn" aria-label="Смотреть">
