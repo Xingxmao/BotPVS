@@ -462,11 +462,12 @@ h1 {
 .watch-btn {
     background: #007bff;
     color: white;
-    padding: 8px 15px;
+    padding: 8px 12px;
     border: none;
     border-radius: 4px;
     display: flex;
     align-items: center;
+    justify-content: center; /* Добавлено центрирование */
     gap: 8px;
     cursor: pointer;
     transition: background 0.2s;
@@ -477,7 +478,7 @@ h1 {
 }
 
 .watch-btn span {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* Адаптивность для мобилок */
