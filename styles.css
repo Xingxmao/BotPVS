@@ -1,3 +1,40 @@
+:root {
+    --primary-bg: #1A1A2E;
+    --secondary-bg: #16213E;
+    --accent-1: #FF6B6B;
+    --accent-2: #4ECDC4;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0CC;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+/* Обновленные стили карточек */
+.card {
+    background: var(--secondary-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(78, 205, 196, 0.15);
+}
+
+/* Новые релизы */
+.release-item {
+    background: var(--secondary-bg);
+    border: 1px solid rgba(78, 205, 196, 0.1);
+}
+
+.release-badge.series { color: #4ECDC4; background: rgba(78,205,196,0.1); }
+.release-badge.films { color: #FF6B6B; background: rgba(255,107,107,0.1); }
+.release-badge.animation { color: #FFD93D; background: rgba(255,217,61,0.1); }
+.release-badge.dorama { color: #6C5CE7; background: rgba(108,92,231,0.1); }
+
 /* Основные стили */
 body {
     font-family: 'Roboto', sans-serif;
@@ -99,7 +136,6 @@ h1 {
     margin-top: 12px; /* Добавили отступ сверху */
 }
 
-/* Стили для карточки */
 /* Стили для карточек */
 .card-grid {
     display: grid;
@@ -221,7 +257,6 @@ h1 {
     background-color: #0056b3;
 }
 
-/* Стили для кнопок соцсетей в одну линию */
 /* Стили для кнопок соцсетей */
 .social-buttons {
     display: flex;
@@ -263,7 +298,7 @@ h1 {
 .search-wrapper {
     display: flex;
     justify-content: center; /* Центрирование по горизонтали */
-    margin-bottom: 20px; /* Отступ снизу */
+    margin-bottom: 10px; /* Отступ снизу */
 }
 
 .search-container {
@@ -340,4 +375,159 @@ h1 {
 @keyframes slideIn {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+/* Новинки */
+/* Стили для новых релизов */
+.release-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: 12px 0;
+    background: rgba(40, 40, 40, 0.95);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.release-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+.release-title {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.release-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.release-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.release-badge.series { background: rgba(0,123,255,0.1); color: #007bff; }
+.release-badge.films { background: rgba(220,53,69,0.1); color: #dc3545; }
+.release-badge.animation { background: rgba(255,193,7,0.1); color: #ffc107; }
+.release-badge.dorama { background: rgba(23,162,184,0.1); color: #17a2b8; }
+
+.release-date {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Новые релизы - синяя рамка */
+#featured-releases {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+/* Кнопка "Смотреть" */
+.watch-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.watch-btn:hover {
+    background: #0056b3;
+}
+
+.watch-btn span {
+    font-size: 14px;
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 480px) {
+    .watch-btn span {
+        display: inline; /* Гарантируем отображение текста */
+    }
+}
+
+/* Для мобилок оставляем текст */
+@media (max-width: 480px) {
+    .watch-btn span {
+        display: inline !important;
+    }
+    .watch-btn {
+        padding: 8px 12px;
+    }
+}
+
+.error-message {
+    padding: 15px;
+    background: rgba(255, 68, 68, 0.1);
+    border-radius: 8px;
+    color: #ff4444;
+    text-align: center;
+}
+
+.no-results {
+    padding: 20px;
+    text-align: center;
+    color: #888;
+}
+
+/* Стили для Rutube плеера */
+.rutube-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Соотношение 16:9 */
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+
+.rutube-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .rutube-container {
+        margin: 15px 0;
+    }
+}
+
+/* Лого отсуп */
+.logo-container {
+    margin-top: 60px; /* Основной отступ сверху */
+    margin-bottom: 35px; /* Отступ снизу если нужно */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .logo-container {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        margin-top: 15px;
+    }
 }
