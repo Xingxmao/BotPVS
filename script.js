@@ -1,3 +1,5 @@
+// Проверка загрузки данных
+console.log('Данные загружены:', Object.keys(data));
 document.addEventListener('DOMContentLoaded', () => {
     // Загрузка социальных кнопок
     const socialButtonsContainer = document.getElementById('social-buttons');
@@ -159,20 +161,31 @@ function showDetails(sectionId, itemId) {
         const item = sectionData.find(i => i.id === itemId);
         if (item) {
             const detailsHTML = `
-                <div class="details-container">
-                    <h1>${item.title}</h1>
-                    <p>${item.description}</p>
-                    <div class="details-buttons">
-                        ${item.links.map(link => `
-                            <a href="${link.link}" target="_blank">
-                                <i class="${link.icon}"></i>
-                                <span>${link.text}</span>
-                            </a>
-                        `).join('')}
-                    </div>
-                    <a href="#main-menu" class="menu-item" onclick="showSection('main-menu')">
-                        <i class="fas fa-arrow-left"></i>
-                        <span>Назад</span>
+        <div class="details-container">
+            <h1>${item.title}</h1>
+            
+            ${item.rutubeId ? `
+            <div class="rutube-container">
+                <iframe src="https://rutube.ru/embed/${item.rutubeId}/" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            ` : ''}
+            
+            <p>${item.description}</p>
+            <div class="details-buttons">
+                ${item.links.map(link => `
+                    <a href="${link.link}" target="_blank">
+                        <i class="${link.icon}"></i>
+                        <span>${link.text}</span>
+                    </a>
+                `).join('')}
+            </div>
+            <a href="#main-menu" class="menu-item back-button" onclick="showSection('main-menu')">
+                <i class="fas fa-arrow-left"></i>
+                <span>Назад</span>
                     </a>
                 </div>
             `;
@@ -263,6 +276,126 @@ searchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         performSearch();
     }
+});
+
+// Новинка
+// =============================================
+// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (ДОЛЖНЫ БЫТЬ В НАЧАЛЕ)
+// =============================================
+
+function getType(section) {
+    const typeMap = {
+        series: 'Сериал',
+        films: 'Фильм',
+        animation: 'Мультфильм',
+        dorama: 'Дорама'
+    };
+    return typeMap[section] || 'Другое';
+}
+
+function formatDate(dateString) {
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('ru-RU', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    } catch (e) {
+        console.error('Некорректная дата:', dateString);
+        return 'Дата неизвестна';
+    }
+}
+
+// =============================================
+// ОСНОВНАЯ ЛОГИКА НОВЫХ РЕЛИЗОВ (ОБНОВЛЕННЫЙ)
+// =============================================
+
+function loadFeaturedReleases() {
+    const container = document.getElementById('featured-releases');
+    if (!container) return;
+
+    try {
+        const featuredItems = getFeaturedItems();
+        container.innerHTML = generateFeaturedHTML(featuredItems);
+        addFeaturedEventListeners();
+    } catch (error) {
+        handleFeaturedError(container, error);
+    }
+}
+
+function getFeaturedItems() {
+    const sections = ['series', 'films', 'animation', 'dorama'];
+    return sections
+        .flatMap(section => 
+            (data[section] || [])
+                .filter(item => item.featured)
+                .map(item => ({ ...item, section }))
+        )
+        .sort((a, b) => {
+            const dateCompare = new Date(b.dateAdded) - new Date(a.dateAdded);
+            return dateCompare !== 0 ? dateCompare : a.title.localeCompare(b.title);
+        })
+        .slice(0, 3);
+}
+
+function generateFeaturedHTML(items) {
+    if (items.length === 0) {
+        return '<div class="no-results">Нет новых релизов</div>';
+    }
+    
+    return items.map(item => `
+        <div class="release-item" 
+             data-section="${item.section}" 
+             data-id="${item.id}">
+            <div class="release-info">
+                <h3 class="release-title">${item.title}</h3>
+                <div class="release-meta">
+                    <span class="release-badge ${item.section}">
+                        ${getType(item.section)}
+                    </span>
+                    <time class="release-date">
+                        ${formatDate(item.dateAdded)}
+                    </time>
+                </div>
+            </div>
+            <button class="watch-btn" aria-label="Смотреть">
+                <i class="fas fa-play"></i>
+                <span>Смотреть</span>
+            </button>
+        </div>
+    `).join('');
+}
+
+function addFeaturedEventListeners() {
+    document.querySelectorAll('.watch-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const parent = this.closest('.release-item');
+            const section = parent.dataset.section;
+            const id = parent.dataset.id;
+            showDetails(section, id);
+        });
+    });
+}
+
+// Остальные функции без изменений
+
+function handleFeaturedError(container, error) {
+    console.error('Ошибка загрузки релизов:', error);
+    container.innerHTML = `
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            Ошибка загрузки. Попробуйте обновить страницу.
+        </div>
+    `;
+}
+
+// =============================================
+// ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+// =============================================
+document.addEventListener('DOMContentLoaded', () => {
+    loadFeaturedReleases();
+    // Остальная инициализация...
 });
 
 
